@@ -70,9 +70,9 @@ export const Register = (props) => {
               id="name"
               className="form-control"
               placeholder="Enter your name"
+              autoComplete="name"
               required
               autoFocus
-              autoComplete="name"
             />
           </div>
         </fieldset>
@@ -84,8 +84,8 @@ export const Register = (props) => {
               id="email"
               className="form-control"
               placeholder="Email address"
-              required
               autoComplete="email"
+              required
             />
           </div>
         </fieldset>
