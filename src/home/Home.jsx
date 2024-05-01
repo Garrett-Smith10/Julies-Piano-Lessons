@@ -5,7 +5,7 @@ export const Home = () => {
         <div className="home-container">
             <h1>
                 <span>Welcome to </span>
-                <span>Julies Piano Lessons</span>
+                <span>Julie's Piano Lessons</span>
             </h1>
             <div>You're just a couple clicks away from starting your piano journey</div>
         </div>

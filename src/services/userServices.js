@@ -15,8 +15,18 @@ export const getUserByEmail = (email) => {
     )
   }
   
-  export const createUser = (student) => {
+  export const createUser = (user) => {
     return fetch("http://localhost:8088/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then((res) => res.json())
+  }
+
+  export const createStudent = (student) => {
+    return fetch("http://localhost:8088/students", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,4 +34,5 @@ export const getUserByEmail = (email) => {
       body: JSON.stringify(student),
     }).then((res) => res.json())
   }
+  
   

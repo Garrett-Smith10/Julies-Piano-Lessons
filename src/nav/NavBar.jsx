@@ -6,13 +6,13 @@ export const NavBar = () => {
   return (
     <ul className="navbar">
       <li className="navbar-item">
-        <Link to="/">Home</Link>
+        <Link className="navbar-link" to="/">Home</Link>
       </li>
       <li className="navbar-item">
-        <Link to="/lessons">Schedule Lesson</Link>
+        <Link className="navbar-link" to="/lessons">Schedule Lesson</Link>
       </li>
       <li className="navbar-item">
-        <Link to="/myLessons">My Lessons</Link>
+        <Link className="navbar-link" to="/myLessons">My Lessons</Link>
       </li>
       {localStorage.getItem("piano_user") ? (
         <li className="navbar-item navbar-logout">

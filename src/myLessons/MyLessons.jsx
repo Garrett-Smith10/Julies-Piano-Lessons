@@ -4,17 +4,23 @@ import { deleteLesson, getLessons } from "../services/timeService.js";
 import { Link } from "react-router-dom"
 
 export const MyLessons = () => {
-  const [allLessons, setAllLessons] = useState([]);
+  const [myLessons, setMyLessons] = useState([]);
 
   const render = () => {
     getLessons().then((lessonsArray) => {
-      setAllLessons(lessonsArray);
+      setMyLessons(lessonsArray);
     });
   };
 
-  useEffect(() => {
-    render();
-  }, []);
+  
+    useEffect(() => {
+      const currentUser = JSON.parse(localStorage.getItem("piano_user"))
+      const userId = currentUser.id
+      getLessons(userId).then((lessonsArray) => {
+        setMyLessons(lessonsArray)
+      })
+    }, []);
+  
 
   const deleteLessonValue = (lessonId) => {
     deleteLesson(lessonId).then(() => {
@@ -24,7 +30,7 @@ export const MyLessons = () => {
 
   return (
     <div className="lessons-container">
-      {allLessons.map((lessonObj) => {
+      {myLessons.map((lessonObj) => {
         return (
           <div className="lesson-card" key={lessonObj.id}>
             <h2>Scheduled Lesson:</h2>
