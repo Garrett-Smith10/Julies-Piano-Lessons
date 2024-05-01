@@ -5,7 +5,7 @@ import "./Login.css"
 import { getUserByEmail } from "../services/userServices.js"
 
 export const Login = () => {
-  const [email, set] = useState("email123@email.com")
+  const [email, set] = useState("")
   const navigate = useNavigate()
 
   const handleLogin = (e) => {
@@ -38,6 +38,7 @@ export const Login = () => {
           <fieldset>
             <div className="form-group">
               <input
+              id="email"
                 type="email"
                 value={email}
                 onChange={(evt) => set(evt.target.value)}
@@ -45,6 +46,7 @@ export const Login = () => {
                 placeholder="Email address"
                 required
                 autoFocus
+                autoComplete="email"
               />
             </div>
           </fieldset>
@@ -58,7 +60,7 @@ export const Login = () => {
         </form>
       </section>
       <section>
-        <Link to="/register">Not a member yet?</Link>
+        <Link to="/register">Register Here!</Link>
       </section>
     </main>
   )

@@ -25,9 +25,13 @@ export const LessonDetails = () => {
   return (
     <section className="lesson">
       <header className="lesson-header">Lesson Details</header>
+      <div className="lesson-info-student">
+        <span className="lesson-info-student">Student : </span>
+        {lesson.user?.name}
+      </div>
       <div>
-        <span className="lesson-info">Student : </span>
-        {lesson.student?.name}
+        <span className="lesson-info">Email : </span>
+        {lesson.user?.email}
       </div>
       <div>
         <span className="lesson-info"> Date : </span>
@@ -37,9 +41,13 @@ export const LessonDetails = () => {
         <span className="lesson-info">Time : </span>
         {lesson.time}
       </div>
-      <div>
-        <span className="lesson-info">Teacher : </span>
+      <div className="lesson-info-teacher">
+        <span className="lesson-info-teacher">Teacher : </span>
         {lesson.teacher?.name}
+      </div>
+      <div>
+        <span className="lesson-info">Email: </span>
+        {lesson.teacher?.email}
       </div>
       <div>
         <span className="lesson-info">Lesson Address :</span>

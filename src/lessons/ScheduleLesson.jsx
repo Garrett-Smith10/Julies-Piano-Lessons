@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import "./ScheduleLesson.css";
-import { getTimes, postNewAppointment } from "../services/timeService.js";
+import { getTimes, postNewLesson } from "../services/timeService.js";
 import { MyLessons } from "../myLessons/MyLessons.jsx";
+import { getStudents } from "../services/studentService.js";
+import { checkForDuplicateLessons } from "../services/lessonService.js";
 
 export const ScheduleLesson = () => {
   const [allTimes, setAllTimes] = useState([]);
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+  const [currentUser, setCurrentUser] = useState({})
+  const [studentId, setStudentId] = useState("")
 
   const render = () => {
     getTimes().then((timesArr) => {
@@ -16,7 +20,21 @@ export const ScheduleLesson = () => {
 
   useEffect(() => {
     render();
+    const user = JSON.parse(localStorage.getItem("piano_user"))
+    setCurrentUser(user)
+
+    getStudents().then((students) => {
+
+      const student = students.find((student) => student.userId === user.id)
+      if (student) {
+        setStudentId(student.id)
+      }
+    })
   }, []);
+  
+
+  
+
 
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
@@ -61,18 +79,26 @@ export const ScheduleLesson = () => {
           <button
             className="save"
             onClick={() => {
-              const defaultState = {
-                date: selectedDate,
-                time: selectedTime,
-                studentId: 1,
-                teacherId: 1
-              };
-              postNewAppointment(defaultState).then(() => {
-                render()
-                setSelectedDate("");
-                setSelectedTime("");
-              });
-              <MyLessons date={selectedDate} time={selectedTime} />
+              checkForDuplicateLessons(selectedDate, selectedTime).then((checkForDuplicate) => {
+                if (checkForDuplicate) {
+
+                  const defaultState = {
+                    date: selectedDate,
+                    time: selectedTime,
+                    studentId: studentId,
+                    teacherId: 1,
+                    userId: currentUser.id
+                  };
+                  postNewLesson(defaultState).then(() => {
+                    render()
+                    setSelectedDate("");
+                    setSelectedTime("");
+                  });
+                  <MyLessons date={selectedDate} time={selectedTime} />
+                } else {
+                  alert("A lesson at this date and time already exists. Please choose another")
+                }
+            })
             }}
           >
             Save

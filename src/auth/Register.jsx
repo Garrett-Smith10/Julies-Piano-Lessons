@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
-import { getUserByEmail, createUser } from "../services/userServices.js"
+import { getUserByEmail, createUser, createStudent } from "../services/userServices.js"
 
 export const Register = (props) => {
   const [student, setStudent] = useState({
     email: "",
-    fullName: "",
+    name: "",
     isStudent: true,
   })
   let navigate = useNavigate()
@@ -18,11 +18,22 @@ export const Register = (props) => {
           "piano_user",
           JSON.stringify({
             id: createdUser.id,
-            staff: createdUser.isStudent,
+            student: createdUser.isStudent,
           })
         )
 
-        navigate("/")
+        const { email, id } = createdUser
+
+        const newStudent = {
+            email,
+            userId: id,
+            phone: "1234567890"
+        }
+
+        createStudent(newStudent).then(() => {
+            navigate("/")
+        })
+
       }
     })
   }
@@ -56,7 +67,7 @@ export const Register = (props) => {
             <input
               onChange={updateStudent}
               type="text"
-              id="fullName"
+              id="name"
               className="form-control"
               placeholder="Enter your name"
               required
@@ -82,7 +93,7 @@ export const Register = (props) => {
               <input
                 onChange={(evt) => {
                   const copy = { ...student }
-                  copy.isStaff = evt.target.checked
+                  copy.isStudent = evt.target.checked
                   setStudent(copy)
                 }}
                 type="checkbox"
