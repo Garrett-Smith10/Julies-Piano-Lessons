@@ -17,7 +17,7 @@
     padding: 5rem 3rem;
     border: 1px solid var(--outline);
     background-color: white;
-    border-radius: 0.5rem;
+    border-radius: 1em;
   }
   
   /* This targets any div that is a child of an element with the .welcome-container class */
