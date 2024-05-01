@@ -60,7 +60,7 @@ export const Register = (props) => {
   return (
     <main style={{ textAlign: "center" }}>
       <form className="form-login" onSubmit={handleRegister}>
-        <h1>Julies Piano Lessons</h1>
+        <h1>Julie's Piano Lessons</h1>
         <h2>Please Register</h2>
         <fieldset>
           <div className="form-group">
@@ -89,7 +89,7 @@ export const Register = (props) => {
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <label>
+            {/* <label>
               <input
                 onChange={(evt) => {
                   const copy = { ...student }
@@ -100,7 +100,7 @@ export const Register = (props) => {
                 id="isStudent"
               />
               I am a teacher{" "}
-            </label>
+            </label> */}
           </div>
         </fieldset>
         <fieldset>

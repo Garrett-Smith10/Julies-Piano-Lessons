@@ -94,3 +94,14 @@
  margin-bottom: 5px;
 }
 
+.lesson-info-student {
+  font-size: large;
+  color: rgb(135, 134, 224);
+  text-decoration: underline;
+}
+
+.lesson-info-teacher {
+  font-size: large;
+  color: rgb(135, 134, 224);
+  text-decoration: underline;
+}

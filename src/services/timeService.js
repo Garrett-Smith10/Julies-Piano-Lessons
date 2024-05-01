@@ -2,8 +2,8 @@ export const getTimes = () => {
     return fetch("http://localhost:8088/times").then((res) => res.json())
 }
 
-export const getLessons = () => {
-    return fetch("http://localhost:8088/lesson").then((res) => res.json())
+export const getLessons = (userId) => {
+    return fetch(`http://localhost:8088/lesson?userId=${userId}`).then((res) => res.json())
 }
 
 export const postNewLesson = async (newLesson) => {
