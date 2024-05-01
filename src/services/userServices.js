@@ -10,32 +10,7 @@ export const getStudentUsers = () => {
 
 
 export const getUserByEmail = (email) => {
-<<<<<<< HEAD
-  return fetch(`http://localhost:8088/users?email=${email}`).then((res) =>
-    res.json()
-  )
-}
 
-export const createUser = (user) => {
-  return fetch("http://localhost:8088/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  }).then((res) => res.json())
-}
-
-export const createStudent = (student) => {
-  return fetch("http://localhost:8088/students", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(student),
-  }).then((res) => res.json())
-}
-=======
     return fetch(`http://localhost:8088/users?email=${email}`).then((res) =>
       res.json()
     )
@@ -60,6 +35,5 @@ export const createStudent = (student) => {
       body: JSON.stringify(student),
     }).then((res) => res.json())
   }
-  
->>>>>>> 83319f271caac3b1ee499a62b49e26a8f2d40781
+
   
