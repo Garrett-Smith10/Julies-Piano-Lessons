@@ -12,7 +12,7 @@ font-family: "Roboto", sans-serif;
 :root {
   --primary: #ffb400;
   --secondary: #00a6ed;
-  --info: #7fb800;
+  --info: #a3a0b9;
   --warning: #f6511d;
   --white: #ffffff;
   --offWhite: #f2f2f3;
@@ -98,7 +98,7 @@ button {
 }
 
 .btn-info:hover {
-  background-color: #71a500;
+  background-color: #606163;
 }
 
 /* This CSS can be deleted. It is only used for the first chapter */

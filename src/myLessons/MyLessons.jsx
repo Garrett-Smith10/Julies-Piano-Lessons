@@ -24,7 +24,7 @@ export const MyLessons = () => {
 
   const deleteLessonValue = (lessonId) => {
     deleteLesson(lessonId).then(() => {
-      render();
+      setMyLessons(previousLessons => previousLessons.filter(lesson => lesson.id !== lessonId))
     });
   };
 
